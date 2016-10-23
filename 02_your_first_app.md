@@ -11,7 +11,7 @@ familiar with a few things:
 (But don't worry: they're optional, they don't make it much harder to understand
 what's going on, and [choo supports older browsers](https://github.com/yoshuawuyts/choo/#choo--internet-explorer--safari))
 * [npm](https://nodejs.org/en/download/), and importing JavaScript modules using
-`require(...)`
+`require('...')`
 
 As you go through this tutorial, please take note of anything that is confusing
 and [let us know about it](https://github.com/yoshuawuyts/workshop-choo/issues/12)
@@ -290,7 +290,8 @@ const view = (state, prev, send) => {
     </div>`
 
   function onSubmit (e) {
-    . . .
+    '. . .'
+  }
 }
 ```
 
@@ -331,7 +332,8 @@ const view = (state, prev, send) => {
     </div>`
 
   function onSubmit (e) {
-    . . .
+    '. . .'
+  }
 }
 ```
 
@@ -379,22 +381,22 @@ use an **effect**.
 
 ## Effects
 
-**Effects** are similar to **reducers** except instead of modifying the **state**
-they cause _side effects_ by interacting servers, databases, DOM APIs, etc. Often
-they'll call a reducer when they're done to update the state. For instance, you
-may have an **effect** called `getUsers` that fetches a list of users from a 
-server API using AJAX. Assuming the AJAX request completes successfully, the
-effect can pass off the list of users to a **reducer** called `receiveUsers`
-which simply updates the **state** with that list, separating the concerns of
-interacting with an API from updating the application's state.
+**Effects** are similar to **reducers** except instead of modifying the
+**state** they cause _side effects_ by interacting servers, databases, DOM
+APIs, etc. Often they'll call a reducer when they're done to update the state.
+For instance, you may have an **effect** called `getUsers` that fetches a list
+of users from a server API using AJAX. Assuming the AJAX request completes
+successfully, the effect can pass off the list of users to a **reducer** called
+`receiveUsers` which simply updates the **state** with that list, separating
+the concerns of interacting with an API from updating the application's state.
 
-For the purposes of this tutorial, we'll use a wrapper around `localStorage`
-to resemble making an AJAX request. Drop this code snippet in anywhere - all it
-does is `getAll` items from `localStorage`, `add` an item and `replace`
-an item. And it provides a callback just for appearances even though `localStorage`
-is synchronous. It's not very elegant and for demonstration purposes only. You
-don't need to learn how `localStorage` works for this tutorial; just pretend it's
-interacting with a database.
+For the purposes of this tutorial, we'll use a wrapper around `localStorage` to
+resemble making an AJAX request. Drop this code snippet in anywhere - all it
+does is `getAll` items from `localStorage`, `add` an item and `replace` an
+item. And it provides a callback just for appearances even though
+`localStorage` is synchronous. It's not very elegant and for demonstration
+purposes only. You don't need to learn how `localStorage` works for this
+tutorial; just pretend it's interacting with a database.
 
 ```javascript
 // localStorage wrapper
@@ -428,7 +430,7 @@ Now back to our application code! Let's start by creating an effect called
 `getAll` to get an array of our `todos`. Once it completes, we'll use `send()`
 to pass it off to a very simple `receiveTodos` reducer to be applied to the
 state. Notice that when used inside an **effect**, `send()` requires a third
-parameter: `done`. This allows effects to be chained together in a sequence. 
+parameter: `done`. This allows effects to be chained together in a sequence.
 
 ```javascript
 app.model({
@@ -502,13 +504,12 @@ app.model({
   },
   effects: {
     getTodos: (data, state, send, done) => {
-      . . .
+      '. . .'
     },
     addTodo: (data, state, send, done) => {
       const todo = extend(data, {
         completed: false
       })
-      
       store.add('todos', todo, () => {
         send('receiveNewTodo', todo, done)
       })
@@ -609,7 +610,7 @@ app.model({
       const todo = extend(data, {
         completed: false
       })
-      
+
       store.add('todos', todo, () => {
         send('receiveNewTodo', todo, done)
       })

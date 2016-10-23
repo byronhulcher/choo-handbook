@@ -42,11 +42,10 @@ const el = html`
 `
 
 // correct
-const el = [
+const el2 = [
   html`<div>hey</div>`,
   html`<div>hey</div>`
 ]
-`
 ```
 
 ## Wrapping up
